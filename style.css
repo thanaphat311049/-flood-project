@@ -1,0 +1,251 @@
+*{
+    font-family: "IBM Plex Sans Thai", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    scroll-behavior: smooth;
+}
+body{
+
+}
+section{
+    width: 100%; 
+    height: 100vh;
+
+}
+.top-section {
+    width: 100%;
+    height: 55%;
+    background-image: url(./รูปเมืองเมืองอาคารเมืองการ์ตูนวาดมือสูง\ PNG\ \,\ เมือง\,\ คึกคัก\,\ อาคารภาพ\ PNG\ และ\ เวกเตอร์\ สำหร.jpeg);
+
+    /* เพิ่ม Flexbox */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#topic {
+    font-size: 4rem; /* ขนาดฟอนต์ 4rem */
+    color: #333; /* สีของข้อความ */
+    line-height: 1.2; /* เพิ่มการจัดระยะห่างระหว่างบรรทัด */
+    margin: 0; /* เอาระยะห่างจากภายนอกออก */
+  }
+
+.box-h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+  }
+#txt-topic {
+    text-align: center;
+    font-size: 4rem;
+    margin: 0; /* เอาค่า margin ออกเพื่อไม่ให้รบกวนการจัดตำแหน่ง */
+}
+.water-section {
+
+    width: 100%;
+    height: 45%; /* ความสูงของน้ำ */
+    background-color: #00bfff; /* สีพื้นน้ำ */
+    overflow: hidden;
+}
+
+@keyframes typing {
+    100% {
+        width: 100%; /* ทำให้ความกว้างเต็มภายใน 3 วินาที */
+    }
+}
+
+@keyframes blink-caret {
+    50% {
+        border-color: transparent; /* ทำให้เส้นขวางหายไป */
+    }
+}
+.water {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, #1e90ff 60%, #00bfff 100%);
+    overflow: hidden;
+  }
+  .water::before,
+  .water::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 200%;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 40%;
+    animation: wave 4s infinite linear;
+  }
+  .water::after {
+    top: -60px;
+    animation: wave 4s infinite linear reverse;
+  }
+  @keyframes wave {
+    0% {
+      transform: translateX(10) translateY(0);
+    }
+    50% {
+      transform: translateX(-15%) translateY(20px);
+    }
+    100% {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  #next-page {
+    position: absolute;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center the content horizontally */
+    justify-content: center; /* Center the content vertically */
+    transition: .2s;
+
+    z-index: 9999;
+    font-size: 1.2rem;
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+    color: aliceblue;
+    bottom: 20%;
+    right: 45%;
+  }
+  #next-page:hover {
+    position: absolute;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center the content horizontally */
+    justify-content: center; /* Center the content vertically */
+    transform: scale(1.2);
+    transition: .2s;
+    z-index: 9999;
+    font-size: 1.2rem;
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+    color: aliceblue;
+    bottom: 20%;
+    right: 45%;
+  }
+  #next-page ion-icon {
+    margin-top: 8px; /* Space between the text and the icon */
+    font-size: 24px; /* Adjust the icon size */
+  }
+  aside{
+    width: 100%;
+    height: 100vh;
+    background-color: #00bfff;
+  }
+  .top-aside{
+    width: 100%;
+    height: 50%;
+    display: flex;            /* ใช้ flexbox สำหรับจัดตำแหน่ง */
+    justify-content: center;  /* จัดตำแหน่งข้อความให้อยู่ตรงกลางแนวนอน */
+    align-items: center;      /* จัดตำแหน่งข้อความให้อยู่ตรงกลางแนวตั้ง */
+    text-align: center;
+  }
+  #topic2{
+    font-size: 4rem; /* ขนาดฟอนต์ 4rem */
+    color: #f3f3f3; /* สีของข้อความ */
+    line-height: 1.2; /* เพิ่มการจัดระยะห่างระหว่างบรรทัด */
+    margin: 0; /* เอาระยะห่างจากภายนอกออก */
+  }
+
+  
+  .top-aside {
+    width: 100%;
+    height: 50%;
+    background-color: #00bfff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+  }
+  
+  
+  
+  #next-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Use full viewport height */
+  }
+
+  /* Optionally style the button */
+  #next-to {
+    margin-top: 20px; /* Add some spacing between the text and button */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ebebeb; /* Example background color */
+    color: rgb(42, 47, 51);
+    border: none;
+    border-radius: 5px;
+    
+  }
+
+  #next-to {
+    position: relative;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    outline: none;
+    transition: background-color 0.3s;
+  }
+  
+  #next-to:hover {
+    background-color: #2980b9; /* Darken button on hover */
+    color: #ffffff;
+  }
+  
+  /* Create the water splash effect */
+  #next-to::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease-out;
+  }
+  
+  #next-to:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  #next-to::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease-out;
+  }
+  
+  #next-to:hover::after {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  

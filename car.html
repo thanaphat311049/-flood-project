@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <title>LET me TRIED Requirements</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=Poppins:wght@200;400&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <style>
+    /* Add animation for the text to bounce continuously */
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px); /* Moves the text up by 20px */
+      }
+    }
+
+    /* Apply animation to the #topic and #topic2 */
+    #topic2 {
+      animation: bounce 1s ease-in-out infinite; /* 1s duration, infinite loop */
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="top-section">
+      <div class="box-h1">
+        <h1 id="topic"></h1>
+      </div>
+    </div>
+    <div class="water-section">
+      <button id="next-page">กดเพื่อต่อไป
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </button>
+      <div class="water"></div>
+    </div>
+  </section>
+  
+  <!-- เพิ่มปุ่มสำหรับเริ่มต้นข้อความ -->
+  <aside id="next-section">
+    <div class="top-aside">
+      <h1 id="topic2">พวกเรามีเว็บไซต์มานำเสนอ
+          เพื่อช่วยเเก้ปัญหาการเกิดน้ำท่วม</h1>
+    </div>
+    <a href="./web/index2.html">
+      <button id="next-to"> เข้าสู่หน้าเว็บไซต์ของเรา </button>
+    </a>
+  </aside>
+
+  <script src="myscripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator with Secret Code</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        #calculator {
+            width: 400px;
+            background-color: black;  
+            padding: 20px;
+            text-align: right;
+        }
+        #display {
+            width: 100%;
+            height: 80px;
+            font-size: 3em;
+            text-align: right;
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .buttons-container {
+            display: flex;
+        }
+        .numbers, .operations {
+            display: grid;
+            gap: 10px;
+        }
+        .numbers {
+            grid-template-columns: repeat(3, 1fr);
+            width: 100%;
+        }
+        .operations {
+            grid-template-columns: 1fr;
+            width: 100px;
+            margin-left: 10px;
+        }
+        .button {
+            width: 100%;
+            height: 100px;
+            font-size: 2em;
+            border: none;
+            border-radius: 15%;
+            cursor: pointer;
+        }
+        .button.gray { background-color: #a5a5a5; color: black; }
+        .button.orange { background-color: #ff9500; color: white; }
+        .button.dark { background-color: #333; color: white; }
+        .button.zero {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons-container">
+            <div class="numbers">
+                <button class="button gray" onclick="clearDisplay()">C</button>
+                <button class="button gray" onclick="negate()">+/-</button>
+                <button class="button gray" onclick="press('%')">%</button>
+                <button class="button dark" onclick="press('7')">7</button>
+                <button class="button dark" onclick="press('8')">8</button>
+                <button class="button dark" onclick="press('9')">9</button>
+                <button class="button dark" onclick="press('4')">4</button>
+                <button class="button dark" onclick="press('5')">5</button>
+                <button class="button dark" onclick="press('6')">6</button>
+                <button class="button dark" onclick="press('1')">1</button>
+                <button class="button dark" onclick="press('2')">2</button>
+                <button class="button dark" onclick="press('3')">3</button>
+                <button class="button dark zero" onclick="press('0')">0</button>
+                <button class="button dark" onclick="press('.')">.</button>
+            </div>
+            <div class="operations">
+                <button class="button orange" onclick="press('/')">÷</button>
+                <button class="button orange" onclick="press('*')">×</button>
+                <button class="button orange" onclick="press('-')">−</button>
+                <button class="button orange" onclick="press('+')">+</button>
+                <button class="button orange" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let displayValue = "";  // ค่าในหน้าจอแสดงผล
+        const secretCode = "1234";  // รหัสลับสำหรับเข้าสู่หน้าใหม่
+
+        function press(key) {
+            displayValue += key;
+            document.getElementById("display").value = displayValue;
+        }
+
+        function clearDisplay() {
+            displayValue = "";
+            document.getElementById("display").value = displayValue;
+        }
+
+        function negate() {
+            if (displayValue) {
+                displayValue = (parseFloat(displayValue) * -1).toString();
+                document.getElementById("display").value = displayValue;
+            }
+        }
+
+        function calculate() {
+            if (displayValue === secretCode) {
+                // หากกรอกรหัสลับที่ถูกต้อง เปลี่ยนไปยังหน้าใหม่
+                window.location.href = "thankyou.html";
+            } else {
+                try {
+                    // หากไม่ใช่รหัสลับ ให้คำนวณตามปกติ
+                    displayValue = eval(displayValue).toString();
+                    document.getElementById("display").value = displayValue;
+                } catch (e) {
+                    // หากมีข้อผิดพลาดในการคำนวณ เช่น การแบ่งด้วย 0
+                    alert("Error in calculation");
+                    clearDisplay();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

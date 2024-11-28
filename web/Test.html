@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rational Method Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;500&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    body {
+      font-family: "IBM Plex Sans Thai", sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #add8e6, #ffffff);
+    }
+    header {
+      background-color: #333;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 24px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      
+    }
+    .theme-toggle {
+      background-color: #f4f4f9;
+      color: #333;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 15px;
+      cursor: pointer;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px 0 ;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      background: #e9ecef;
+      border-left: 4px solid #007BFF;
+      font-size: 16px;
+    }
+    .warning {
+      color: #dc3545;
+      font-weight: bold;
+    }
+    .info {
+      color: #ffc107;
+      font-weight: bold;
+    }
+    .what{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .txt.hover {
+      position: relative; /* Needed for positioning the additional text */
+      text-decoration: none; /* Remove underline from the link */
+    }
+    
+    .txt.hover::after {
+      content: ' ข้อมูลอ่างอิงค่าสัมประสิทธิ์การไหลบ่า'; /* The text that will appear */
+      position: absolute;
+      background-color: #333;
+      color: #ddd;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 100px;
+      left: 100%; /* Position the text next to the icon */
+      top: 0;
+      margin-left: 10px; /* Space between the icon and the text */
+      opacity: 0; /* Initially hidden */
+      white-space: nowrap; /* Prevent text from wrapping */
+      transition: opacity 0.3s ease; /* Smooth fade-in */
+    }
+    
+    .txt.hover:hover::after {
+      opacity: 1; /* Show the text when hovering */
+    }
+    
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">CHAI MIANG</a>
+    <nav>
+      <ul>
+        <li><a href="/car.html">หน้าแรก</a></li>
+        <li><a href="Test.html">คำนวณโอกาสน้ำท่วม</a></li>
+        <li><a href="math.html">เครื่องคิดเลขระดับเทพ</a></li>
+        <li><a href="/web/about.html">อ้างอิงข้อมูลค่าสัมประสิทธิ์การไหลบ่า</a></li>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>โอกาสที่น้ำจะท่วม</h1>
+    <p>น้ำส่วนเกิน = 𝑄 − capacity</p>
+    <p>
+      Q=CiA ,
+      Q: อัตราการไหลบ่าน้ำฝน (ลูกบาศก์เมตรต่อวินาที),
+      C: ค่าสัมประสิทธิ์การไหลบ่า (ไม่มีหน่วย),
+      i: ความเข้มของฝน (มิลลิเมตรต่อชั่วโมง),
+      A: ขนาดพื้นที่ (หน่วย)
+    </p>
+    <div class="what">
+      <label for="C">ค่าสัมประสิทธิ์การไหลบ่า</label>
+      <a href="/web/about.html" class="txt hover">
+        <ion-icon name="book-outline"></ion-icon>
+      </a>
+    </div>
+    <input type="number" id="C" step="0.01" min="0" max="1" placeholder="Enter a value between 0 and 1">
+
+    <label for="i">ปริฒาณฝน mm/hr</label>
+    <input type="number" id="i" step="0.1" min="0" placeholder="Enter rainfall intensity">
+
+    <label for="A">พื้นที่ km²</label>
+    <input type="number" id="A" step="0.1" min="0" placeholder="Enter area">
+
+    <label for="capacity">ความสามารถของระบบระบายน้ำ (m³/s)</label>
+    <input type="number" id="capacity" step="0.1" min="0" placeholder="Enter drainage capacity">
+
+    <button onclick="calculateRunoff()">คำนวณ</button>
+
+    <div class="result" id="result" style="display: none;">
+      <strong>Result:</strong>
+      <p id="output"></p>
+      <p id="warning" style="display: none;"></p>
+    </div>
+  </div>
+
+  <script>
+    function calculateRunoff() {
+      const C = parseFloat(document.getElementById('C').value);
+      const i = parseFloat(document.getElementById('i').value);
+      const A = parseFloat(document.getElementById('A').value);
+      const capacity = parseFloat(document.getElementById('capacity').value);
+      if (isNaN(C) || isNaN(i) || isNaN(A) || isNaN(capacity) || C < 0 || C > 1 || i < 0 || A < 0 || capacity < 0) {
+        alert('กรุณาใส่ค่าที่ถูกต้องสำหรับทุกช่อง');
+        return;
+      }
+      const i_m_hr = i / 1000; // แปลง mm/hr เป็น m/hr
+      const A_m2 = A * 1_000_000; // แปลง km² เป็น m²
+
+      // คำนวณ Q
+      const Q = (C * i_m_hr * A_m2) / 3600; // แปลง hr เป็นวินาที
+
+      // คำนวณน้ำส่วนเกิน
+      const excess = Q - capacity;
+
+      // แสดงผลลัพธ์
+      const resultDiv = document.getElementById('result');
+      const outputDiv = document.getElementById('output');
+      const warningDiv = document.getElementById('warning');
+
+      resultDiv.style.display = 'block';
+      outputDiv.textContent = `The runoff (Q) is ${Q.toFixed(2)} m³/s.`;
+
+      // ตรวจสอบน้ำส่วนเกินและแสดงข้อความเตือน
+      if (excess > 0) {
+        if (excess <= 2) {
+          warningDiv.style.display = 'block';
+          warningDiv.textContent = `น้ำส่วนเกิน ${excess.toFixed(2)} m³/s. น้ำท่วมเล็กน้อย: อาจเกิดแอ่งน้ำขังในพื้นที่ลุ่มต่ำหรือถนนบางส่วน.`;
+          warningDiv.className = 'info';
+        } else if (excess > 2 && excess <= 5) {
+          warningDiv.style.display = 'block';
+          warningDiv.textContent = `น้ำส่วนเกิน ${excess.toFixed(2)} m³/s. น้ำท่วมใหญ่: น้ำอาจเข้าสู่พื้นที่อยู่อาศัยหรือสร้างความเสียหายในเขตเมือง.`;
+          warningDiv.className = 'warning';
+        } else {
+          warningDiv.style.display = 'block';
+          warningDiv.textContent = `น้ำส่วนเกิน ${excess.toFixed(2)} m³/s. น้ำท่วมรุนแรง: อาจเกิดความเสียหายใหญ่ในพื้นที่.`;
+          warningDiv.className = 'warning';
+        }
+      } else {
+        warningDiv.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
